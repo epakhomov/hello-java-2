@@ -27,7 +27,7 @@ pipeline {
 			steps {
 				withCoverityEnvironment(coverityInstanceUrl: "$CONNECT", projectName: "$PROJECT", streamName: "$PROJECT-$BRANCH_NAME") {
 					sh '''
-						cov-build --dir idir $WORKSPACE mvn -B clean package -DskipTests
+						cov-build --dir idir $WORKSPACE mvn clean compile
 						cov-analyze --dir idir --ticker-mode none --strip-path $WORKSPACE --webapp-security
 						cov-commit-defects --dir idir --ticker-mode none --url http://localhost:8888 --stream hello-java \
 							--description $BUILD_TAG --target Linux_x86_64 --version $GIT_COMMIT
@@ -51,7 +51,7 @@ pipeline {
 					sh '''
 						export CHANGE_SET=$(git --no-pager diff origin/$CHANGE_TARGET --name-only)
 						[ -z "$CHANGE_SET" ] && exit 0
-						cov-run-desktop --dir idir --url http://localhost:8888 --stream hello-java --build mvn -B clean package -DskipTests
+						cov-run-desktop --dir idir --url http://localhost:8888 --stream hello-java --build mvn clean compile
 						cov-run-desktop --dir idir --url http://localhost:8888 --stream hello-java --present-in-reference false \
 							--ignore-uncapturable-inputs true --text-output issues.txt $CHANGE_SET
 						if [ -s issues.txt ]; then cat issues.txt; touch issues_found; fi
