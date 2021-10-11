@@ -12,11 +12,6 @@ pipeline {
 				sh 'mvn -B compile'
 			}
 		}
-		stage('Test') {
-			steps {
-				sh 'mvn -B test'
-			}
-		}
 		stage('Coverity Full Scan') {
 			when {
 				allOf {
