@@ -29,8 +29,7 @@ pipeline {
 					sh '''
 						cov-build --dir idir mvn clean compile
 						cov-analyze --dir idir --ticker-mode none --strip-path $WORKSPACE --webapp-security
-						cov-commit-defects --dir idir --ticker-mode none --url http://localhost:8888 --stream hello-java \
-							--description $BUILD_TAG --target Linux_x86_64 --version $GIT_COMMIT
+						cov-commit-defects --dir idir --ticker-mode none --url http://localhost:8888 --stream hello-java
 					'''
 					script { // Coverity Quality Gate
 						count = coverityIssueCheck(viewName: 'Outstanding Issues', returnIssueCount: true)
