@@ -2,7 +2,7 @@ pipeline {
 	agent any
 
 	environment {
-		CONNECT = 'http://localhost:8888'
+		CONNECT = 'http://ec2-54-176-118-141.us-west-1.compute.amazonaws.com:8888'
 		PROJECT = 'hello-java'
 	}
 
