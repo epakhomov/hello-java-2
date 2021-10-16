@@ -5,7 +5,7 @@ pipeline {
 	stages {
 
 
-		stage('Black Duck pull request scan) {
+		stage('Black Duck pull request scan') {
 			when {
 				allOf {
 					changeRequest()
