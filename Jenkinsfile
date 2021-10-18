@@ -23,7 +23,7 @@ pipeline {
 			steps {
 				withCoverityEnvironment(coverityInstanceUrl: "$CONNECT", projectName: "$PROJECT", streamName: "$PROJECT-$BRANCH_NAME") {
 					sh '''
-						cov-build --dir idir $WORKSPACE mvn clean compile
+						cov-build --dir idir mvn clean compile
 						cov-analyze --dir idir --ticker-mode none --strip-path $WORKSPACE --webapp-security
 						cov-commit-defects --dir idir --ticker-mode none --url $COV_URL --stream $COV_STREAM \
 							--description $BUILD_TAG --target Linux_x86_64 --version $GIT_COMMIT
