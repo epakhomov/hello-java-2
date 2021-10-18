@@ -16,6 +16,8 @@ pipeline {
 				
 					sh '''
                         echo 'RUNNING DETECT'
+			export CHANGE_SET=$(git --no-pager diff origin/$CHANGE_TARGET --name-only)
+						[ -z "$CHANGE_SET" ] && exit 0
 						
 					'''
 				
