@@ -28,7 +28,7 @@ pipeline {
 						cov-commit-defects --dir idir  --url $COV_URL --stream $PROJECT 
 					'''
 					script { // Coverity Quality Gate
-						count = coverityIssueCheck(viewName: 'OWASP Web Top 10', returnIssueCount: true)
+						count = coverityIssueCheck(viewName: 'Outstanding Issues', returnIssueCount: true)
 						if (count != 0) { unstable 'issues detected' }
 					}
 				}
