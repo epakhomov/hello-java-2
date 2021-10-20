@@ -16,7 +16,7 @@ pipeline {
 			}
 			steps {
 
-                    synopsys_detect "--detect.project.name=test"
+                    synopsys_detect "--detect.project.name=test --logging.level.com.synopsys.integration=DEBUG"
 				
 
 			}
