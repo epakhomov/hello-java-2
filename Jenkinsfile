@@ -16,7 +16,7 @@ pipeline {
 			}
 			steps {
 
-                    synopsys_detect "--detect.project.name=test --detect.tools.excluded=GRADLE --logging.level.com.synopsys.integration=DEBUG"
+                    synopsys_detect "--detect.project.name=test --logging.level.com.synopsys.integration=DEBUG"
 				
 
 			}
